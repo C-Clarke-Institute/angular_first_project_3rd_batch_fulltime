@@ -1,0 +1,7 @@
+<p>side-nav-bar works!</p>
+<p> {{ action }} </p>
+
+<app-side-nav-action [title]="'Home'" (navClick)="onNavClick($event)"></app-side-nav-action>
+<app-side-nav-action [title]="'About'" (navClick)="onNavClick($event)"></app-side-nav-action>
+<app-side-nav-action [title]="'Contact us'" [(action)]="action"></app-side-nav-action>
+<app-side-nav-action [title]="'Privacy Policies'"  [(action)]="action"></app-side-nav-action>
