@@ -1,0 +1,8 @@
+<div>
+  <p> {{ product?.name }}</p>
+  @if ( product?.stock === 0 ) {
+    <span>No Stocks Available</span>
+  } @else {
+    <span>{{ product?.stock }} Stocks</span>
+  }
+</div>

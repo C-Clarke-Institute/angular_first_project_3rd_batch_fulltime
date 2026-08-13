@@ -8,6 +8,10 @@ import { Component, Input, input, model, output } from '@angular/core';
 })
 export class SideNavAction {
 
+
+  @Input()
+  hide = false;
+
   title = input('Home');
 
   navClick = output<any>();
