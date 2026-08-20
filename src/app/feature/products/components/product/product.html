@@ -1,10 +1,24 @@
-<div>
-  <p> {{ product?.name }}</p>
+<div
+  [ngClass]="product && product.stock > 0 ? 'active' : 'in-active'"
+  [ngStyle]="{
+    'background-color': product && product.stock > 0 ? 'green' : 'red'
+  }"
+>
+  <p
+    [ngClass]="{
+     'out-of-stock' : product && product.stock === 0,
+     'active-title' : product && product.stock === 0,
+    }"
+    appHighlight
+    [appHighlightColor]="'yellow'"
+    [appHighlightHeight]="'50px'"> {{ product?.name }}</p>
   @if ( product?.stock === 0 ) {
-    <span>No Stocks Available</span>
+    <p appHighlight [appHighlightColor]="'red'">No Stocks Available</p>
   } @else {
-    <span>{{ product?.stock }} Stocks</span>
+    <p appHighlight [appHighlightColor]="'green'">{{ product?.stock }} Stocks</p>
   }
+
+  <button [class.disabled]="product && product.stock == 0" class="btn-primary">Add To Cart</button>
 
   <p *ngIf="product?.stock > 0; else stockNotAvailable">
     Structural Directive Available

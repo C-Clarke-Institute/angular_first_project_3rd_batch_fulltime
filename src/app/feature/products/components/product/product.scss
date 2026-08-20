@@ -1,0 +1,30 @@
+.active {
+  border: 1px solid black;
+}
+
+.in-active {
+  border: 1px solid red;
+}
+
+.out-of-stock {
+  color: red;
+  text-decoration: line-through;
+}
+
+.active-title {
+  font-weight: bold;
+}
+
+.disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  height: 40px;
+  width: 200px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: navy;
+  color: white;
+}

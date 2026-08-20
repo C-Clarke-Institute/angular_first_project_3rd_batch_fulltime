@@ -1,8 +1,11 @@
 import { Component, Input, input, model, output } from '@angular/core';
+import { Highlight } from '../directives/highlight';
 
 @Component({
   selector: 'app-side-nav-action',
-  imports: [],
+  imports: [
+    Highlight
+  ],
   templateUrl: './side-nav-action.html',
   styleUrl: './side-nav-action.scss',
 })

@@ -4,7 +4,7 @@
 
 
 <div (click)="onNavClick()" class="app-side-nav-action">
-  @if( !hide ) { <p> {{ title() }} </p> }
+  @if( !hide ) { <p appHighlight> {{ title() }} </p> }
   @else if ( title() === 'About') {
     <p>Else If</p>
   } @else {
