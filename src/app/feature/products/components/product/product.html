@@ -5,4 +5,13 @@
   } @else {
     <span>{{ product?.stock }} Stocks</span>
   }
+
+  <p *ngIf="product?.stock > 0; else stockNotAvailable">
+    Structural Directive Available
+  </p>
 </div>
+
+
+<ng-template #stockNotAvailable>
+  <p>Structural Directive Not Available</p>
+</ng-template>
