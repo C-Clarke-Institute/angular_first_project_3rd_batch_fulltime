@@ -1,7 +1,7 @@
 <div
   [ngClass]="product && product.stock > 0 ? 'active' : 'in-active'"
   [ngStyle]="{
-    'background-color': product && product.stock > 0 ? 'green' : 'red'
+    'background-color': product && product.stock > 0 ? 'white' : 'white'
   }"
 >
   <p
@@ -17,6 +17,8 @@
   } @else {
     <p appHighlight [appHighlightColor]="'green'">{{ product?.stock }} Stocks</p>
   }
+
+  <p> {{ product?.createdOn | date }}</p>
 
   <button [class.disabled]="product && product.stock == 0" class="btn-primary">Add To Cart</button>
 

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ProductDto } from '../../models/product.model';
 import { Highlight } from '../../../../directives/highlight';
-import { NgClass, NgStyle } from '@angular/common';
+import { DatePipe, NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-product',
-  imports: [Highlight, NgClass, NgStyle],
+  imports: [Highlight, NgClass, NgStyle, DatePipe],
   templateUrl: './product.html',
   styleUrl: './product.scss',
 })
