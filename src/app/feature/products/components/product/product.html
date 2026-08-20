@@ -12,6 +12,10 @@
     appHighlight
     [appHighlightColor]="'yellow'"
     [appHighlightHeight]="'50px'"> {{ product?.name }}</p>
+
+  <p> {{ product?.description | truncate : 15 : 5 }}</p>
+  <p> {{ product?.price | currency : 'EUR' }}</p>
+
   @if ( product?.stock === 0 ) {
     <p appHighlight [appHighlightColor]="'red'">No Stocks Available</p>
   } @else {

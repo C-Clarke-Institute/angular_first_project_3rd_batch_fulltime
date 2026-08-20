@@ -7,7 +7,7 @@ export const productsList: ProductDto[] = [
     description: "Test",
     price: 120.00,
     stock : 5,
-    createdOn: new Date()
+    createdOn: new Date('2026-06-10T10:00:00.000Z'),
   },
   {
     id: 2,
