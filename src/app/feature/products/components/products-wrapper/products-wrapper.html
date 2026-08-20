@@ -1,4 +1,10 @@
 <span>Display product list in here</span>
 @for ( product of products; track product.id ) {
+  <p> {{ $index + 1}} </p>
+  <p> {{ $first }} </p>
+  <p> {{ $last }} </p>
+  <p> {{ $odd }} </p>
+  <p> {{ $even }} </p>
+  <p> {{ $count }} </p>
   <app-product [product]="product" ></app-product>
 }
