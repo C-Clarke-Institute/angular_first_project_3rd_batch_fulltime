@@ -11,4 +11,11 @@ import { productsList } from '../../utils/products-list';
 })
 export class ProductsWrapper {
   products: ProductDto[] = productsList;
+
+  cartProducts: ProductDto[] = [];
+
+
+  public onAddToCartProduct(product: ProductDto) {
+    this.cartProducts.push(product);
+  }
 }

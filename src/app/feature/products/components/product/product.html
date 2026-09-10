@@ -24,7 +24,7 @@
 
   <p> {{ product?.createdOn | date }}</p>
 
-  <button [class.disabled]="product && product.stock == 0" class="btn-primary">Add To Cart</button>
+  <button (click)="onAddToCartProduct()" [class.disabled]="product && product.stock == 0" class="btn-primary">Add To Cart</button>
 
   <p *ngIf="product?.stock > 0; else stockNotAvailable">
     Structural Directive Available

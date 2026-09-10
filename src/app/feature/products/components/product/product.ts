@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductDto } from '../../models/product.model';
 import { Highlight } from '../../../../directives/highlight';
 import { CurrencyPipe, DatePipe, NgClass, NgStyle } from '@angular/common';
@@ -13,5 +13,14 @@ import { TruncatePipe } from '../../../../pipes/truncate-pipe';
 export class Product {
 
   @Input() product!: ProductDto;
+
+  @Output() onAddToCart = new EventEmitter();
+
+  constructor() {
+  }
+
+  public onAddToCartProduct() {
+    this.onAddToCart.emit( this.product );
+  }
 
 }
