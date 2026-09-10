@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class ProductsWrapper {
   products: ProductDto[] = productsList;
   discountPercentage= signal(10);
-  cartProducts: ProductDto[] = [];
+  cartProducts = signal<ProductDto[]>([])
 
   counter = 0;
   count = signal(0);
@@ -25,13 +25,18 @@ export class ProductsWrapper {
   })
 
   showProduct = false;
+  toggleProduct = signal(false);
 
   public toggleProducts() {
     this.showProduct = !this.showProduct;
+    this.discountPrice()
   }
 
   public onAddToCartProduct(product: ProductDto) {
-    this.cartProducts.push(product);
+    this.cartProducts.update( value => [
+      ...value,
+      product
+    ]);
 
     // set new value
     // this.counter = this.cartProducts.length;
