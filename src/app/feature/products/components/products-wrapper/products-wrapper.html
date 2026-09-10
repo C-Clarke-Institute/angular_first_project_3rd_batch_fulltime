@@ -1,21 +1,30 @@
-<div style="display: flex">
-  <div>
-    <span>Display product list in here</span>
-    @for ( product of products; track product.id ) {
-      <p> {{ $index + 1}} </p>
-      <p> {{ $first }} </p>
-      <p> {{ $last }} </p>
-      <p> {{ $odd }} </p>
-      <p> {{ $even }} </p>
-      <p> {{ $count }} </p>
-      <app-product [product]="product" (onAddToCart)="onAddToCartProduct($event)"  ></app-product>
-    }
+<button (click)="toggleProducts()">Toggle</button>
+@if ( showProduct ) {
+  <div style="display: flex">
+
+    <div>
+      <span>Display product list in here</span>
+      @for ( product of products; track product.id ) {
+        <p> {{ $index + 1}} </p>
+        <p> {{ $first }} </p>
+        <p> {{ $last }} </p>
+        <p> {{ $odd }} </p>
+        <p> {{ $even }} </p>
+        <p> {{ $count }} </p>
+        <app-product [product]="product" (onAddToCart)="onAddToCartProduct($event)"  ></app-product>
+      }
+    </div>
+
+    <div style="margin-left: 200px">
+      <p>Cart product: {{ counter }}</p>
+      <p>Cart product with signal : {{ count() }}</p>
+      <p>Total Price : {{ totalPrice() }}</p>
+      <p>Discounted Price : </p>
+      <input type="number" [ngModel]="discountPercentage">
+      @for ( product of cartProducts; track product.id ) {
+        <p> {{ product.name }} - {{ product.price }}</p>
+      }
+    </div>
   </div>
-  <div style="margin-left: 200px">
-    <p>Cart product: {{ counter }}</p>
-    <p>Cart product with signal : {{ count() }}</p>
-    @for ( product of cartProducts; track product.id ) {
-      <p> {{ product.name }}</p>
-    }
-  </div>
-</div>
+}
+
