@@ -1,6 +1,6 @@
-<span>Display product list in here</span>
 <div style="display: flex">
   <div>
+    <span>Display product list in here</span>
     @for ( product of products; track product.id ) {
       <p> {{ $index + 1}} </p>
       <p> {{ $first }} </p>
@@ -12,6 +12,8 @@
     }
   </div>
   <div style="margin-left: 200px">
+    <p>Cart product: {{ counter }}</p>
+    <p>Cart product with signal : {{ count() }}</p>
     @for ( product of cartProducts; track product.id ) {
       <p> {{ product.name }}</p>
     }
