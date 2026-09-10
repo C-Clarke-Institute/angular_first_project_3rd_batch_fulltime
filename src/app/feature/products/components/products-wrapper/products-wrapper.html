@@ -19,8 +19,13 @@
       <p>Cart product: {{ counter }}</p>
       <p>Cart product with signal : {{ count() }}</p>
       <p>Total Price : {{ totalPrice() }}</p>
-      <p>Discounted Price : </p>
-      <input type="number" [ngModel]="discountPercentage">
+      <p>Discounted Amount : {{ getDiscountAmount() }}</p>
+      <p>Discounted Price : {{ discountPrice() }}</p>
+      <input type="number"
+             [ngModel] = discountPercentage()
+             (ngModelChange)="discountPercentage.set($event)">
+      <p>{{ discountPercentage() }}</p>
+
       @for ( product of cartProducts; track product.id ) {
         <p> {{ product.name }} - {{ product.price }}</p>
       }

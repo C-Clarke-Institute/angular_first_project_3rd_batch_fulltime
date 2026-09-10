@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { ProductDto } from '../../models/product.model';
 import { Product } from '../product/product';
 import { productsList } from '../../utils/products-list';
@@ -13,12 +13,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductsWrapper {
   products: ProductDto[] = productsList;
-  discountPercentage: number = 0;
+  discountPercentage= signal(10);
   cartProducts: ProductDto[] = [];
 
   counter = 0;
   count = signal(0);
   totalPrice = signal(0);
+  discountPrice = computed(() => {
+    console.log( "Inside discount price" );
+    return this.totalPrice() - ( this.totalPrice() * this.discountPercentage() / 100 ) ;
+  })
 
   showProduct = false;
 
@@ -37,5 +41,10 @@ export class ProductsWrapper {
     this.counter += 1;
     this.count.update((value) => value + 1);
     this.totalPrice.update((value) => value + product.price);
+  }
+
+  public getDiscountAmount() {
+    console.log('getDiscountAmount()');
+    return this.totalPrice() * this.discountPercentage() / 100;
   }
 }
