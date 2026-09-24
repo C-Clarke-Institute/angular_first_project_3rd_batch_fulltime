@@ -3,6 +3,11 @@
 <p>Counter Service : {{ counterService.getCount() }}</p>
 <p>Counter Component Service : {{ counterComponentService.getCount() }}</p>
 <button (click)="countIncrement()">Count Increment</button>
+<button (click)="subscribe()">Subscribe</button>
+
+@for ( number of numbers(); track $index) {
+  <p>Number {{ number}}</p>
+}
 
 <app-side-nav-action [hide]="true" [title]="'Home'" (navClick)="onNavClick($event)"></app-side-nav-action>
 <app-side-nav-action [hide]="true" [title]="'About'" (navClick)="onNavClick($event)"></app-side-nav-action>
