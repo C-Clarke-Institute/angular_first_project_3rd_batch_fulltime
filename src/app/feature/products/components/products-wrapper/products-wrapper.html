@@ -13,7 +13,7 @@
         <p> {{ $odd }} </p>
         <p> {{ $even }} </p>
         <p> {{ $count }} </p>
-        <app-product [product]="product" (onAddToCart)="onAddToCartProduct($event)"  ></app-product>
+        <app-product [product]="product" [productCount]="count()" (onAddToCart)="onAddToCartProduct($event)"  ></app-product>
       }
     </div>
 
