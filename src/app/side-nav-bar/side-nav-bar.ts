@@ -3,7 +3,7 @@ import { SideNavAction } from '../side-nav-action/side-nav-action';
 import { CartService } from '../feature/cart/services/cart-service';
 import { Counter } from '../services/counter';
 import { CounterComponent } from '../services/counter-component';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-side-nav-bar',
@@ -19,6 +19,7 @@ export class SideNavBar {
   counterService = inject(Counter);
   counterComponentService = inject(CounterComponent);
   numbers = signal<number[]>([]);
+  counterSubscription!: Subscription;
 
 
   onNavClick( title: any ) {
@@ -31,9 +32,13 @@ export class SideNavBar {
   }
 
   public subscribe() {
-    this.counterService.getCounter().subscribe( count => {
+    this.counterSubscription = this.counterService.getCounter().subscribe( count => {
       this.numbers.update( value => [...value, count]);
     })
+  }
+
+  public unsubscribe() {
+    this.counterSubscription.unsubscribe();
   }
 
 }

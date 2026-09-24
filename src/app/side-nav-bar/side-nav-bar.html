@@ -4,6 +4,7 @@
 <p>Counter Component Service : {{ counterComponentService.getCount() }}</p>
 <button (click)="countIncrement()">Count Increment</button>
 <button (click)="subscribe()">Subscribe</button>
+<button (click)="unsubscribe()">Unsubscribe</button>
 
 @for ( number of numbers(); track $index) {
   <p>Number {{ number}}</p>
