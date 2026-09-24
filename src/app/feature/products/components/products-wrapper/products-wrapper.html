@@ -1,5 +1,6 @@
 <button (click)="toggleProducts()">Toggle</button>
-<p>Cart Service Count : {{ cartService.getCount()}}</p>
+<button (click)="toggleTest()">Show Test</button>
+
 @if ( showProduct ) {
   <div style="display: flex">
 
@@ -32,5 +33,9 @@
       }
     </div>
   </div>
+}
+
+@if ( showTest() ) {
+  <app-test/>
 }
 

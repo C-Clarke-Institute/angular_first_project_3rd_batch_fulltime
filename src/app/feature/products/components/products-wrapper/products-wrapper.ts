@@ -4,25 +4,23 @@ import { Product } from '../product/product';
 import { productsList } from '../../utils/products-list';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../cart/services/cart-service';
+import { Test } from '../test/test';
 
 @Component({
   selector: 'app-products-wrapper',
-  imports: [Product, FormsModule],
+  imports: [Product, FormsModule, Test],
   templateUrl: './products-wrapper.html',
   styleUrl: './products-wrapper.scss',
 })
 export class ProductsWrapper implements OnInit {
-
-  cartService = inject(CartService)
+  cartService = inject(CartService);
 
   constructor() {
     effect(() => {
       console.log('Products Wrapper');
     });
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   products: ProductDto[] = productsList;
   discountPercentage = signal(10);
@@ -30,6 +28,7 @@ export class ProductsWrapper implements OnInit {
 
   counter = 0;
   count = signal(0);
+  showTest = signal(false);
   totalPrice = signal(0);
   discountPrice = computed(() => {
     console.log('Inside discount price');
@@ -61,5 +60,9 @@ export class ProductsWrapper implements OnInit {
   public getDiscountAmount() {
     console.log('getDiscountAmount()');
     return (this.totalPrice() * this.discountPercentage()) / 100;
+  }
+
+  public toggleTest() {
+    this.showTest.update( value => !value);
   }
 }
