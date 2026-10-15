@@ -1,18 +1,20 @@
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
+  EventEmitter, inject,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  Output,
-  SimpleChanges,
+  Output, signal,
+  SimpleChanges
 } from '@angular/core';
 import { ProductDto } from '../../models/product.model';
 import { Highlight } from '../../../../directives/highlight';
 import { CurrencyPipe, DatePipe, NgClass, NgStyle } from '@angular/common';
 import { TruncatePipe } from '../../../../pipes/truncate-pipe';
+import { Counter } from '../../../../services/counter';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -26,6 +28,11 @@ export class Product implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   @Output() onAddToCart = new EventEmitter();
 
+  counterService = inject(Counter);
+  numbers = signal<number[]>([]);
+  counterSubscription!: Subscription;
+
+
   constructor() {
     console.log("On Constructor Product");
   }
@@ -36,6 +43,7 @@ export class Product implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log("On Destroy Product");
+    this.counterSubscription.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,6 +53,10 @@ export class Product implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
    console.log("On Initial Product");
+   this.counterSubscription = this.counterService.getCounter().subscribe( count => {
+      this.numbers.update( value => [...value, count]);
+      console.log(count);
+   })
   }
 
 
